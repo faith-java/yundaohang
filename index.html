@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>浏览器打开</title>
+  <link rel="stylesheet" href="https://img.faithxy.com/start/src/layui-v2.9.7/css/layui.css" >
+  <style >
+    *{margin:0; padding:0; color: #f3f0f0; text-align: center;}
+    img{max-width: 90%; height: auto;}
+  </style>
+  <script>
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf('micromessenger') != -1;
+    var url = window.location.href;
+    if (!isWeixin){
+      window.location = "https://m.cqzz.top";
+    }
+  </script>
+
+</head>
+<body style="background-color: #666666;">
+
+<div style="width: 100%;text-align: right;">
+  <img src="live_weixin.png" alt="微信打开"/>
+</div>
+<div style="font-size: 22px; line-height: 46px; margin-top: 66px;">
+  <p>1.本站暂不支持微信内访问</p>
+  <p>2.请按提示在 浏览器 中打开</p>
+  <span style="display: inline-block; background-color: #999999;color: white;padding: 6px 20px; border-radius: 9px;
+        margin-top: 66px; letter-spacing: 6px; cursor: pointer;" onclick="copyUrl()">复制本站网址</span>
+</div>
+<script src="https://img.faithxy.com/start/src/js/jquery.js"></script>
+<script src="https://img.faithxy.com/start/src/layui-v2.9.7/layui.js"></script>
+<script>
+
+  function copyUrl(){
+    var content = url;
+    //复制到剪贴板
+    var $temp = $("<textarea>");
+    $("body").append($temp);
+    $temp.val(content).select();//选择复制的对象str
+    var isCopyOk = document.execCommand("Copy");
+    $temp.remove();
+    if(isCopyOk){
+      layer.closeAll();
+      layer.msg('复制好啦~', {
+        time: 1000
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
